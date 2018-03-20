@@ -14,13 +14,13 @@ def get_mean(sampling_fun,N,M):
 		medias[i]=np.mean(sampling_fun(N))
 	return medias
 
-n=np.array([10,100,1000])
-m=10000
-medias_1=np.zeros((m,3))
-medias_2=np.zeros((m,3))
-texto='sample_'
-for i in range(3):
+n=np.array([10,100,1000])#arreglo con los distintos valores de n
+m=10000#valor de M
+medias_1=np.zeros((m,3))#arreglo que guarta las m medias para 3 enes de sample1
+medias_2=np.zeros((m,3))#lo de arriba pero con sample 2
+texto='sample_'#texto que me da pereza escribir dos veces
+for i in range(3):#recorrido para cada n
 	medias_1[:,i]=get_mean(sample_1,n[i],m)
 	medias_2[:,i]=get_mean(sample_2,n[i],m)
-	np.savetxt(texto+'1_'+str(n[i])+'.txt',medias_1[:,i])
+	np.savetxt(texto+'1_'+str(n[i])+'.txt',medias_1[:,i])#archivo con las m medias para cada n
 	np.savetxt(texto+'2_'+str(n[i])+'.txt',medias_2[:,i])
